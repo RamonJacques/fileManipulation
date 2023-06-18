@@ -38,7 +38,11 @@ public class Program {
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(
-				new FileWriter("c:\\temp\\ws-eclipse\\fileManipulation\\out\\summary.csv"))) {
+				new FileWriter("c:\\temp\\ws-eclipse\\fileManipulation\\out\\summary.csv", true))) {
+			for(Product product : list) {
+				bw.write(product.toString());
+				bw.newLine();
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();;
