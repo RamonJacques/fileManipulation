@@ -1,7 +1,9 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +18,9 @@ public class Program {
 		Locale.setDefault(Locale.US);
 
 		List<Product> list = new ArrayList<>();
-		
+
 		try (BufferedReader br = new BufferedReader(
-			new FileReader("c:\\temp\\ws-eclipse\\fileManipulation\\item-list.csv"))) {
+				new FileReader("c:\\temp\\ws-eclipse\\fileManipulation\\item-list.csv"))) {
 			String line = br.readLine();
 
 			while (line != null) {
@@ -28,17 +30,18 @@ public class Program {
 				int quantity = Integer.parseInt(vect[2]);
 				Product product = new Product(name, value, quantity);
 				list.add(product);
-				
-				
+
 				line = br.readLine();
 			}
-			for (Product item : list) {
-				System.out.println(item);
-			}
-			
-			
 		} catch (IOException e) {
 			System.out.println("Error: " + e.getMessage());
+		}
+
+		try (BufferedWriter bw = new BufferedWriter(
+				new FileWriter("c:\\temp\\ws-eclipse\\fileManipulation\\out\\summary.csv"))) {
+
+		} catch (IOException e) {
+			e.printStackTrace();;
 		}
 	}
 
