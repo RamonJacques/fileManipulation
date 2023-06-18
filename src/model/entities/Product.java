@@ -42,6 +42,11 @@ public class Product {
 	public double totalValue(double value, int quantity) {
 		return value * quantity;
 	}
+
+	@Override
+	public String toString() {
+		return "";
+	}
 	
 	
 }
