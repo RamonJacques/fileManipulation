@@ -39,10 +39,7 @@ public class Product {
 		this.quantity = quantity;
 	}
 	
-	@Override
-	public String toString() {
-		return this.getName() + "," + value*quantity;
+	public double totalValue() {
+		return value * quantity;
 	}
-	
-	
 }

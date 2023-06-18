@@ -28,19 +28,18 @@ public class Program {
 				String name = vect[0];
 				Double value = Double.parseDouble(vect[1]);
 				int quantity = Integer.parseInt(vect[2]);
-				Product product = new Product(name, value, quantity);
-				list.add(product);
-
+				list.add(new Product(name, value, quantity));
+				
 				line = br.readLine();
 			}
 		} catch (IOException e) {
-			System.out.println("Error: " + e.getMessage());
+			System.out.println("Error reading file: " + e.getMessage());
 		}
 
 		try (BufferedWriter bw = new BufferedWriter(
-				new FileWriter("c:\\temp\\ws-eclipse\\fileManipulation\\out\\summary.csv", true))) {
+				new FileWriter("c:\\temp\\ws-eclipse\\fileManipulation\\out\\summary.csv"))) {
 			for(Product product : list) {
-				bw.write(product.toString());
+				bw.write(product.getName() + "," + String.format("%.2f", product.totalValue()));
 				bw.newLine();
 			}
 
